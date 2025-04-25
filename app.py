@@ -62,9 +62,9 @@ def load_data():
     x_test = x_test.reshape(-1, 28, 28, 1)
     y_train_cat = to_categorical(y_train, 10)
     y_test_cat = to_categorical(y_test, 10)
-    return x_train, y_train_cat, x_test, y_test_cat
+    return x_train, y_train, x_test, y_test, y_train_cat, y_test_cat
 
-x_train, y_train_cat, x_test, y_test_cat = load_data()
+x_train, y_train, x_test, y_test, y_train_cat, y_test_cat = load_data()
 
 # Data visualization section
 st.header("📊 Data Exploration")
