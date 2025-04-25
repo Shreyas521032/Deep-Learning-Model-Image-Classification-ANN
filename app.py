@@ -50,7 +50,6 @@ with st.sidebar:
     Dense(128) -> Dense(10)
     """)
     st.markdown("---")
-    st.markdown("Built by **Shreyas Kasture**")
 
 # Load data
 @st.cache_data
