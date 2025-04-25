@@ -39,7 +39,7 @@ st.markdown("---")
 # Load data
 @st.cache_data
 def load_data():
-    return pd.read_csv('heart disease risk.csv').rename(columns={'target': 'has_disease'})
+    return pd.read_csv('Dataset/heart disease risk.csv').rename(columns={'target': 'has_disease'})
 
 df = load_data()
 
