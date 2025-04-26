@@ -27,16 +27,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
         
-# Load animations
-if loading_animation:
-    st_lottie(loading_animation, 
-             height=100,
-             key="loading_data",
-             speed=1,
-             loop=True,
-             quality="high")
-else:
-    st.warning("Couldn't load animation. Proceeding without it.")
+
 
 # Custom CSS for styling
 st.markdown("""
