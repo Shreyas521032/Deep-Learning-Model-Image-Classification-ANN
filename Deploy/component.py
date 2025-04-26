@@ -25,16 +25,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
-# Function to load Lottie animations
-def load_lottieurl(url: str):
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        return response.json()
-    except Exception as e:
-        st.error(f"❌ Animation loading failed: {str(e)}")
-        return None
         
 # Load animations
 heart_animation = load_gif("src/Animation - 1745652492296.gif")
