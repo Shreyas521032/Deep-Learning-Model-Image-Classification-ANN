@@ -236,16 +236,7 @@ def load_data():
 
 # Get data and show loading animation
 with st.spinner("Loading dataset..."):
-    if enable_animations:
-        if loading_animation:
-            st_lottie(loading_animation, height=100, key="loading_data")
-            time.sleep(1.5)
-        else:
-            st.warning("⚠️ Couldn't load animation - proceeding without visual effects")
     df = load_data()
-    if enable_animations:
-        st.success("✅ Dataset loaded successfully!")
-        time.sleep(0.5)
 
 # Main Content
 st.markdown("---")
@@ -546,8 +537,8 @@ with tabs[1]:
                 early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
                 
                 # Show animated progress
-                if enable_animations:
-                    st_lottie(loading_animation, height=150, key="training_animation")
+                
+                
                 
                 progress_bar = st.progress(0)
                 status_text = st.empty()
@@ -598,9 +589,7 @@ with tabs[1]:
                     time.sleep(0.1)  # Small delay for visual effect
                 
                 # Show completion animation
-                if enable_animations:
-                    status_text.empty()
-                    st_lottie(success_animation, height=150, key="success_animation")
+                
                 
                 st.success("✅ Training completed successfully!")
                 
@@ -1001,17 +990,13 @@ with tabs[2]:
                     scaled_input = scaler.transform(input_data)
                     
                     # Show animated prediction process
-                    if enable_animations:
-                        st_lottie(loading_animation, height=100, key="predict_animation")
-                        time.sleep(1)  # For effect
                     
                     # Get prediction
                     prediction = model.predict(scaled_input)[0][0]
                     risk_percentage = prediction * 100
                     
                     # Display result with animation
-                    if enable_animations:
-                        progress_width = min(risk_percentage, 100)
+                    
                         
                         st.markdown(f"""
                         <div style='text-align: center; margin: 20px 0;'>
