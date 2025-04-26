@@ -209,7 +209,7 @@ with st.sidebar:
         st.session_state['test_size'] = np.random.randint(10, 31)
         st.session_state['epochs'] = np.random.randint(50, 201)
         st.session_state['batch_size'] = np.random.choice(batch_sizes)
-        st.experimental_rerun()
+        st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)
     
     st.markdown("""
