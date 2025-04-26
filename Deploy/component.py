@@ -183,10 +183,6 @@ st.markdown("""
 
 # Sidebar Animation
 with st.sidebar:
-    if heart_animation:
-        st_lottie(heart_animation, height=200, key="heart_animation")
-    else:
-        st.warning("❤️ Animation unavailable")
     st.markdown("<h2 style='text-align: center;'>⚙️ Control Panel</h2>", unsafe_allow_html=True)
     
     st.markdown("<div class='card'>", unsafe_allow_html=True)
