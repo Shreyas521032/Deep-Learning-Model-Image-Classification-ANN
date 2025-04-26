@@ -10,3 +10,4 @@ scipy
 scikit-image
 streamlit-lottie
 requests
+statsmodels
