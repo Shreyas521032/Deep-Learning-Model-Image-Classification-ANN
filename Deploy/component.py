@@ -531,12 +531,14 @@ with tabs[1]:
     train_col1, train_col2, train_col3 = st.columns([1, 2, 1])
     
     with train_col2:
+        
         if st.button("🔥 Train Neural Network 🔥"):
             with st.spinner("Preparing model for training..."):
                 model = create_model()
                 early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
                                          
-                               
+                progress_bar = st.progress(0)
+                status_text = st.empty()               
                 history = {"loss": [], "val_loss": [], "accuracy": [], "val_accuracy": [], "auc": [], "val_auc": []}
                 
                 # Track training progress
