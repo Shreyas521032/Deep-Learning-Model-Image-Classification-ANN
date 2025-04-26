@@ -28,10 +28,6 @@ st.set_page_config(
 )
         
 # Load animations
-heart_animation = load_gif("src/Animation - 1745652492296.gif")
-loading_animation = load_gif("src/Animation - 1745652688329.gif")
-success_animation = load_gif("src/Animation - 1745652761606.gif")
-
 if loading_animation:
     st_lottie(loading_animation, 
              height=100,
