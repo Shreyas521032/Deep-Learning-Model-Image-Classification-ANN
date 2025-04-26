@@ -17,6 +17,7 @@ import time
 from streamlit_lottie import st_lottie
 import requests
 import json
+from PIL import Image
 
 # Set page config
 st.set_page_config(
