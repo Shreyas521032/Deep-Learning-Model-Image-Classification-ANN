@@ -266,7 +266,7 @@ with st.sidebar:
     <div style='background:rgba(255,255,255,0.1); padding:15px; border-radius:10px; margin-top:30px'>
         <h3 style='color:white; font-size:16px'>💡 Did you know?</h3>
         <p style='color:white; font-size:14px'>{random.choice(ml_facts)}</p>
-        <p style='margin:0; font-size:12px; opacity:0.8;'>— Made by Shreyas Kasture</p>
+        <p style='margin:0; font-size:12px; opacity:0.8;'>— Developed by Shreyas Kasture</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1112,7 +1112,7 @@ st.markdown("""
 <div class="footer">
     <div style="text-align:center;">
         <h3>🧠 Deep Learning Playground</h3>
-        <p style="color:#4e54c8; font-weight:600;">Made with ❤️ by Shreyas Kasture for machine learning enthusiasts</p>
+        <p style="color:#4e54c8; font-weight:600;">Developed with ❤️ by Shreyas Kasture for machine learning enthusiasts</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
