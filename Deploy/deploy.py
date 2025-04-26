@@ -1111,7 +1111,7 @@ with tabs[3]:
 st.markdown("""
 <div class="footer">
     <div style="text-align:center;">
-        <h3>🧠 Neural Network Playground</h3>
+        <h3>🧠 Deep Learning Playground</h3>
         <p style="color:#4e54c8; font-weight:600;">Made with ❤️ by Shreyas Kasture for machine learning enthusiasts</p>
     </div>
 </div>
