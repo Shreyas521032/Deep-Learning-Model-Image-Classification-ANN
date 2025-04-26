@@ -1107,3 +1107,13 @@ with tabs[3]:
     The predictions made by this model should be used only as a supplementary tool by healthcare professionals. Clinical judgment and established medical protocols should always take precedence.
     """)
     st.markdown("</div>", unsafe_allow_html=True)
+
+st.markdown("""
+<div class="footer">
+    <div style="text-align:center;">
+        <h3>🧠 Deep Learning Playground</h3>
+        <p style="color:#4e54c8; font-weight:600;">Developed with ❤️ by Shreyas Kasture for machine learning enthusiasts</p>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
