@@ -537,11 +537,42 @@ with tabs[1]:
                 early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
                 
                 # Show animated progress
+                class TrainingCallback(tf.keras.callbacks.Callback):
+                    def __init__(self, total_epochs):
+                        self.total_epochs = total_epochs
+                        self.progress_bar = st.progress(0)
+                        self.status_text = st.empty()
+                    def on_epoch_end(self, epoch, logs=None):
+                        progress = (epoch + 1) / self.total_epochs
+                        self.progress_bar.progress(progress)
+                        self.status_text.markdown(f"""
+                    <div style='text-align: center;'>
+                        <p>Epoch {epoch+1}/{self.total_epochs} - Loss: {logs['loss']:.4f} - Val Loss: {logs['val_loss']:.4f}</p>
+                    </div>
+                """, unsafe_allow_html=True)
+        
+        # Train the model properly with a single fit() call
+                history = model.fit(
+            X_train, y_train,
+            validation_split=0.1,
+            epochs=epochs,
+            batch_size=batch_size,
+            class_weight=class_weight,
+            callbacks=[early_stop, TrainingCallback(epochs)],
+            verbose=0
+        )
+        
+        # Store history correctly
+                st.session_state['history'] = history.history
+                st.success("✅ Training completed successfully!")
+        
+        # Store model and test data
+                st.session_state['model'] = model
+                st.session_state['X_test'] = X_test
+                st.session_state['y_test'] = y_test
+                st.session_state['trained'] = True
                 
                 
-                
-                progress_bar = st.progress(0)
-                status_text = st.empty()
                 
                 history = {"loss": [], "val_loss": [], "accuracy": [], "val_accuracy": [], "auc": [], "val_auc": []}
                 
@@ -968,7 +999,7 @@ with tabs[2]:
                     
                     # Get prediction
                     prediction = model.predict(scaled_input)[0][0]
-                    risk_percentage = prediction * 50
+                    risk_percentage = prediction * 100
                     
                     # Display result with animation
                     
