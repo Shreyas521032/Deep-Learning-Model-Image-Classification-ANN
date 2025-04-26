@@ -977,7 +977,7 @@ with tabs[2]:
                         <div style='text-align: center; margin: 20px 0;'>
                             <h3>Heart Disease Risk: {risk_percentage:.1f}%</h3>
                             <div class='fancy-progress'>
-                                <div class='fancy-progress-bar' style='width: {progress_width}%;'></div>
+                                <div class='fancy-progress-bar'></div>
                             </div>
                         </div>
                         """, unsafe_allow_html=True)
