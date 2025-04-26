@@ -214,7 +214,7 @@ with st.sidebar:
     
     st.markdown("""
     <div style='margin-top: 40px; text-align: center;'>
-        <p style='opacity: 0.7;'>Made with ❤️ and AI</p>
+        <p style='opacity: 0.7;'>Made by Shreyas Kasture</p>
     </div>
     """, unsafe_allow_html=True)
 
