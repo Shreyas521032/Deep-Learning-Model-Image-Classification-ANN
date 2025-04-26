@@ -22,7 +22,7 @@ import time
 
 # Configure page
 st.set_page_config(
-    page_title="Neural Network Playground 🧠",
+    page_title="Deep Learning Playground 🧠",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -193,7 +193,7 @@ st.markdown("""
 # Custom header with animated title effect
 st.markdown("""
 <div style="text-align: center; padding: 20px 0;">
-    <h1 style="font-size: 3.5rem; margin-bottom: 0;">🧠 Neural Network Playground</h1>
+    <h1 style="font-size: 3.5rem; margin-bottom: 0;">🧠 Deep Learning Playground</h1>
     <p style="font-size: 1.5rem; color: #666; margin-top: 5px;">✨ Interactive MNIST Digit Classification with Deep Learning ✨</p>
 </div>
 """, unsafe_allow_html=True)
