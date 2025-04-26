@@ -27,7 +27,7 @@ st.set_page_config(
 )
 
 # Function to load Lottie animations
-def load_lottie_url(url: str):
+def load_lottieurl(url: str):
     try:
         response = requests.get(url)
         response.raise_for_status()
