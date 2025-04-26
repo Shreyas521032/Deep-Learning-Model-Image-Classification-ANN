@@ -260,13 +260,13 @@ with st.sidebar:
         "Neural networks were first proposed in 1943! 🧠👨‍🔬",
         "MNIST has 70,000 images of handwritten digits! ✍️",
         "CNNs were inspired by the visual cortex! 👁️",
-        "Deep learning can recognize cats better than some humans! 🐱",
         "Adding more layers doesn't always mean better results! 📊"
     ]
     st.markdown(f"""
     <div style='background:rgba(255,255,255,0.1); padding:15px; border-radius:10px; margin-top:30px'>
         <h3 style='color:white; font-size:16px'>💡 Did you know?</h3>
         <p style='color:white; font-size:14px'>{random.choice(ml_facts)}</p>
+        <p style='margin:0; font-size:12px; opacity:0.8;'>— Made by Shreyas Kasture</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1112,8 +1112,7 @@ st.markdown("""
 <div class="footer">
     <div style="text-align:center;">
         <h3>🧠 Neural Network Playground</h3>
-        <p>A Streamlit application for exploring neural networks and digit classification.</p>
-        <p style="color:#4e54c8; font-weight:600;">Made with ❤️ for machine learning enthusiasts</p>
+        <p style="color:#4e54c8; font-weight:600;">Made with ❤️ by Shreyas Kasture for machine learning enthusiasts</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
