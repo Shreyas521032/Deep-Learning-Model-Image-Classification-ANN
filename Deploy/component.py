@@ -998,7 +998,7 @@ with tabs[2]:
                     # Display result with animation
                     
                         
-                        st.markdown(f"""
+                    st.markdown(f"""
                         <div style='text-align: center; margin: 20px 0;'>
                             <h3>Heart Disease Risk: {risk_percentage:.1f}%</h3>
                             <div class='fancy-progress'>
