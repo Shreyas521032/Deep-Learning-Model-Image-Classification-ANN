@@ -169,6 +169,13 @@ st.markdown("""
         visibility: visible;
         opacity: 1;
     }
+    .footer {
+        background: black;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
     .emoji-pulse {
         animation: emoji-pulse 1.5s infinite;
     }
@@ -1111,8 +1118,8 @@ with tabs[3]:
 st.markdown("""
 <div class="footer">
     <div style="text-align:center;">
-        <h3>🧠 Deep Learning Playground</h3>
-        <p style="color:#4e54c8; font-weight:600;">Developed with ❤️ by Shreyas Kasture for machine learning enthusiasts</p>
+        <h3>🧠 Deep Learning Playground in Healthcare</h3>
+        <p style="color:#4e54c8; font-weight:600;">Developed with ❤️ by Shreyas Kasture for healthcare problems</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
