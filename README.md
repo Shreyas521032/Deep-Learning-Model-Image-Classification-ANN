@@ -15,6 +15,8 @@ A repository containing two deep learning projects:
 ### 🎯 Objective
 Classify handwritten digits (0-9) from the MNIST dataset using a Convolutional Neural Network (CNN).
 
+🌍 **Deployed Live Project**: [https://shreyas-deep-learning-model-image-classifiy.streamlit.app](https://shreyas-deep-learning-model-image-classifiy.streamlit.app/)
+
 ### 🏗️ Model Architecture
 ```python
 Sequential([
@@ -47,6 +49,8 @@ Sequential([
 
 ### 🎯 Objective
 Predict heart disease risk from patient health records using an Artificial Neural Network (ANN).
+
+🌍 **Deployed Live Project**: [https://shreyas-deep-learning-model-ann.streamlit.app](https://shreyas-deep-learning-model-ann.streamlit.app/)
 
 ### 🏗️ Model Architecture
 ```python
