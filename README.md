@@ -136,17 +136,12 @@ python heart_disease_risk_prediction_using_deep_learning.py
 
 ---
 
-## 🤝 Contributing
+## License
 
-Pull requests are welcome! For major changes, please open an issue first to discuss proposed changes.
+© 2025 Shreyas Kasture
 
----
+All rights reserved.
 
-## 📜 License
+This software and its source code are the intellectual property of the author. Unauthorized copying, distribution, modification, or usage in any form is strictly prohibited without explicit written permission.
 
-MIT
-
----
-
-## 🌟 Star this repo if you find it useful!
-🐛 Report issues in the GitHub Issues section
+For licensing inquiries, please contact: shreyas200410@gmail.com
