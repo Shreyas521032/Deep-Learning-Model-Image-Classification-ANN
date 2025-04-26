@@ -27,16 +27,29 @@ st.set_page_config(
 )
 
 # Function to load Lottie animations
-def load_lottieurl(url: str):
-    r = requests.get(url)
-    if r.status_code != 200:
+def load_lottie_url(url: str):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()
+    except Exception as e:
+        st.error(f"Error loading animation: {str(e)}")
         return None
-    return r.json()
 
 # Load animations
 heart_animation = load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_zfvuugqg.json")
 loading_animation = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_ypppsp4v.json")
 success_animation = load_lottieurl("https://assets7.lottiefiles.com/packages/lf20_s2lryxtd.json")
+
+if loading_animation:
+    st_lottie(loading_animation, 
+             height=100,
+             key="loading_data",
+             speed=1,
+             loop=True,
+             quality="high")
+else:
+    st.warning("Couldn't load animation. Proceeding without it.")
 
 # Custom CSS for styling
 st.markdown("""
