@@ -968,7 +968,7 @@ with tabs[2]:
                     
                     # Get prediction
                     prediction = model.predict(scaled_input)[0][0]
-                    risk_percentage = prediction * 100
+                    risk_percentage = prediction * 50
                     
                     # Display result with animation
                     
