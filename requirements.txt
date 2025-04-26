@@ -5,7 +5,7 @@ matplotlib
 seaborn
 scikit-learn
 pandas
-plotly>=5.18.0
+plotly
 scipy
 scikit-image
 streamlit-lottie
