@@ -37,9 +37,9 @@ def load_lottieurl(url: str):
         return None
         
 # Load animations
-heart_animation = load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_zfvuugqg.json")
-loading_animation = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_ypppsp4v.json")
-success_animation = load_lottieurl("https://assets7.lottiefiles.com/packages/lf20_s2lryxtd.json")
+heart_animation = load_gif("src/Animation - 1745652492296.gif")
+loading_animation = load_gif("src/Animation - 1745652688329.gif")
+success_animation = load_gif("src/Animation - 1745652761606.gif")
 
 if loading_animation:
     st_lottie(loading_animation, 
