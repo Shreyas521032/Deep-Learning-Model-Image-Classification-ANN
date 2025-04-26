@@ -8,3 +8,5 @@ pandas
 plotly
 scipy
 scikit-image
+streamlit-lottie
+requests
