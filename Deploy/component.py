@@ -33,9 +33,9 @@ def load_lottie_url(url: str):
         response.raise_for_status()
         return response.json()
     except Exception as e:
-        st.error(f"Error loading animation: {str(e)}")
+        st.error(f"❌ Animation loading failed: {str(e)}")
         return None
-
+        
 # Load animations
 heart_animation = load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_zfvuugqg.json")
 loading_animation = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_ypppsp4v.json")
@@ -205,7 +205,10 @@ st.markdown("""
 
 # Sidebar Animation
 with st.sidebar:
-    st_lottie(heart_animation, height=200, key="heart_animation")
+    if heart_animation:
+        st_lottie(heart_animation, height=200, key="heart_animation")
+    else:
+        st.warning("❤️ Animation unavailable")
     st.markdown("<h2 style='text-align: center;'>⚙️ Control Panel</h2>", unsafe_allow_html=True)
     
     st.markdown("<div class='card'>", unsafe_allow_html=True)
@@ -260,8 +263,11 @@ def load_data():
 # Get data and show loading animation
 with st.spinner("Loading dataset..."):
     if enable_animations:
-        st_lottie(loading_animation, height=100, key="loading_data")
-        time.sleep(1.5)  # Simulated loading time for effect
+        if loading_animation:
+            st_lottie(loading_animation, height=100, key="loading_data")
+            time.sleep(1.5)
+        else:
+            st.warning("⚠️ Couldn't load animation - proceeding without visual effects")
     df = load_data()
     if enable_animations:
         st.success("✅ Dataset loaded successfully!")
