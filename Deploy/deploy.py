@@ -1021,7 +1021,7 @@ with tabs[3]:
             with col1:
                 if st.button("🧹 Clear", key="clear_canvas"):
                     st.session_state.canvas_image = np.ones((280, 280), dtype=np.float32)
-                    st.experimental_rerun()
+                    st.rerun()
             
             with col2:
                 if st.button("🎲 Random Digit", key="random_digit"):
@@ -1033,7 +1033,7 @@ with tabs[3]:
                     st.session_state.canvas_image = img
                     # Also store the true label
                     st.session_state.canvas_true_label = y_test[idx]
-                    st.experimental_rerun()
+                    st.rerun()
             
             with col3:
                 if st.button("🔄 Predict", key="predict_button"):
