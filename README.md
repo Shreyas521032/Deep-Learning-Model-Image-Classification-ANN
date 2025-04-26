@@ -15,7 +15,7 @@ A repository containing two deep learning projects:
 ### 🎯 Objective
 Classify handwritten digits (0-9) from the MNIST dataset using a Convolutional Neural Network (CNN).
 
-🌍 **Deployed Live Project**: [https://shreyas-deep-learning-model-image-classifiy.streamlit.app](https://shreyas-deep-learning-model-image-classifiy.streamlit.app/) [Use Light Mode for better visualization]
+🌍 **Deployed Live Project**: [https://shreyas-image-classifiy-dl.streamlit.app](https://shreyas-deep-learning-model-image-classifiy.streamlit.app/) [Use Light Mode for better visualization]
 
 ### 🏗️ Model Architecture
 ```python
