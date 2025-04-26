@@ -687,32 +687,7 @@ with tabs[1]:
                 yaxis='y2'
             ))
             
-            fig.update_layout(
-                title='Learning Curves',
-                xaxis=dict(title='Epoch'),
-                yaxis=dict(
-                    title='Loss',
-                    titlefont=dict(color='#ff4b4b'),
-                    tickfont=dict(color='#ff4b4b')
-                ),
-                yaxis2=dict(
-                    title='Accuracy',
-                    titlefont=dict(color='#4b7bff'),
-                    tickfont=dict(color='#4b7bff'),
-                    anchor="x",
-                    overlaying="y",
-                    side="right"
-                ),
-                plot_bgcolor='rgba(0,0,0,0)',
-                paper_bgcolor='rgba(0,0,0,0)',
-                font=dict(color='#e0e0e0'),
-                legend=dict(
-                    bgcolor='rgba(255, 255, 255, 0.1)',
-                    bordercolor='rgba(255, 255, 255, 0.2)',
-                    borderwidth=1
-                ),
-                height=500
-            )
+            
             
             st.plotly_chart(fig, use_container_width=True)
         
