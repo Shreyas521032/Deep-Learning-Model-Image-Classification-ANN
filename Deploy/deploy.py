@@ -32,17 +32,17 @@ st.set_page_config(
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-    
+
     html, body, [class*="css"] {
         font-family: 'Poppins', sans-serif;
     }
-    
+
     .main {
         background: linear-gradient(135deg, #f5f7fa 0%, #e6eef8 100%);
         border-radius: 20px;
         padding: 20px;
     }
-    
+
     h1 {
         background: linear-gradient(90deg, #4e54c8, #8f94fb);
         -webkit-background-clip: text;
@@ -50,7 +50,7 @@ st.markdown("""
         font-weight: 700;
         letter-spacing: -1px;
     }
-    
+
     h2 {
         color: #4e54c8;
         font-weight: 600;
@@ -58,12 +58,12 @@ st.markdown("""
         padding-bottom: 8px;
         margin-bottom: 20px;
     }
-    
+
     h3 {
         color: #6c63ff;
         font-weight: 600;
     }
-    
+
     .stButton > button {
         background: linear-gradient(90deg, #4e54c8, #8f94fb);
         color: white;
@@ -74,26 +74,26 @@ st.markdown("""
         box-shadow: 0 4px 15px rgba(78, 84, 200, 0.3);
         transition: all 0.3s ease;
     }
-    
+
     .stButton > button:hover {
         transform: translateY(-3px);
         box-shadow: 0 7px 20px rgba(78, 84, 200, 0.5);
     }
-    
+
     [data-testid="stSidebar"] {
         background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         padding: 2rem 1rem;
         border-radius: 10px;
     }
-    
+
     [data-testid="stSidebar"] h2, [data-testid="stSidebar"] label, [data-testid="stSidebar"] p {
         color: white !important;
     }
-    
+
     [data-testid="stSidebar"] .stMarkdown {
         color: rgba(255, 255, 255, 0.8) !important;
     }
-    
+
     .highlight-card {
         background: white;
         border-radius: 15px;
@@ -101,15 +101,16 @@ st.markdown("""
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         transition: transform 0.3s ease;
     }
-    
+
     .highlight-card:hover {
         transform: translateY(-5px);
     }
-    
+
     .stProgress > div > div > div {
         background: linear-gradient(90deg, #4e54c8, #8f94fb);
+        animation: pulse 2s infinite;
     }
-    
+
     .metric-card {
         background: white;
         border-radius: 15px;
@@ -118,12 +119,12 @@ st.markdown("""
         text-align: center;
         transition: all 0.3s ease;
     }
-    
+
     .metric-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
-    
+
     .metric-value {
         font-size: 2.5rem;
         font-weight: 700;
@@ -132,13 +133,13 @@ st.markdown("""
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-    
+
     .metric-label {
         font-size: 1rem;
         color: #555;
         font-weight: 500;
     }
-    
+
     .label-pill {
         background: linear-gradient(90deg, #4e54c8, #8f94fb);
         color: white;
@@ -149,18 +150,13 @@ st.markdown("""
         display: inline-block;
         margin-bottom: 10px;
     }
-    
-    /* Cool animation for the progress bar */
+
     @keyframes pulse {
         0% { box-shadow: 0 0 0 0 rgba(78, 84, 200, 0.4); }
         70% { box-shadow: 0 0 0 10px rgba(78, 84, 200, 0); }
         100% { box-shadow: 0 0 0 0 rgba(78, 84, 200, 0); }
     }
-    
-    .stProgress > div > div > div {
-        animation: pulse 2s infinite;
-    }
-    
+
     .footer {
         background: white;
         padding: 30px;
@@ -168,12 +164,12 @@ st.markdown("""
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         margin-top: 50px;
     }
-    
+
     /* Custom tabs styling */
     .stTabs [data-baseweb="tab-list"] {
         gap: 8px;
     }
-    
+
     .stTabs [data-baseweb="tab"] {
         background-color: white;
         border-radius: 4px 4px 0px 0px;
@@ -181,14 +177,14 @@ st.markdown("""
         padding: 10px 20px;
         color: #4e54c8;
     }
-    
+
     .stTabs [aria-selected="true"] {
         background-color: #4e54c8 !important;
         color: white !important;
     }
-    
+
     </style>
-    """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
 # Custom header with animated title effect
 st.markdown("""
@@ -197,6 +193,7 @@ st.markdown("""
     <p style="font-size: 1.5rem; color: #666; margin-top: 5px;">✨ Interactive MNIST Digit Classification with Deep Learning ✨</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 # Fun loading animation for first-time visitors
 if 'first_load' not in st.session_state:
