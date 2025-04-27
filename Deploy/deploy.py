@@ -225,14 +225,13 @@ with st.sidebar:
     # Add some fun neural network ASCII art
     st.markdown("""
     ```
-    Input [•] → [•] → [•]
-          ↓     ↓     ↓
-    Hidden[•] → [•] → [•]
-          ↓     ↓     ↓
-    Output[•] → [•] → [•]
+    Input  →  Input  →  Input
+      ↓        ↓        ↓
+    Hidden → Hidden → Hidden
+      ↓        ↓        ↓
+    Output → Output → Output
     ```
-    """)
-    
+""")
     # Emoji-rich training parameters
     st.markdown("<div class='label-pill'>🔄 Training Parameters</div>", unsafe_allow_html=True)
     epochs = st.slider("🔁 Number of epochs", 5, 30, 15)
