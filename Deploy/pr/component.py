@@ -26,19 +26,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-        
-def set_dark_theme():
-    st.markdown(
-        """
-        <style>
-        body {
-            background-color: #0E1117;
-            color: white;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
 # Custom CSS for styling
 st.markdown("""
@@ -1134,4 +1121,3 @@ st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
-set_dark_theme()
