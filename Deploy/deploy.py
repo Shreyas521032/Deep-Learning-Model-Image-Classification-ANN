@@ -894,7 +894,7 @@ with tabs[2]:
     aspect="equal"
                     )
 
-                   fig.update_layout(
+                    fig.update_layout(
     plot_bgcolor='rgba(0,0,0,0)',
     paper_bgcolor='rgba(0,0,0,0)',
     margin=dict(l=20, r=20, t=20, b=20),
