@@ -890,7 +890,7 @@ with tabs[2]:
                         labels=dict(x="Predicted Digit", y="True Digit", color="Count"),
     x=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
     y=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-    color_continuous_scale="Rainbow",  # 🔁 changed color scale
+    color_continuous_scale="Mint",  
     aspect="equal",
     text_auto=True
 
