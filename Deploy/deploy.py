@@ -904,6 +904,8 @@ with tabs[2]:
         tickfont=dict(color='white'),  # Change tick label color
         titlefont=dict(color='white')  # Change title color
     )
+                )
+
 
                 st.plotly_chart(fig, use_container_width=True)
 
