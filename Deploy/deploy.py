@@ -900,9 +900,8 @@ with tabs[2]:
     margin=dict(l=20, r=20, t=20, b=20),
     height=500,
     coloraxis_colorbar=dict(
-        title="Prediction<br>Count",
-        tickfont=dict(color='white'),
-        titlefont=dict(color='white')
+    title=dict(text="Prediction<br>Count", font=dict(color='white')),  # 🔁 fix
+    tickfont=dict(color='white')
     )
                     )
 
