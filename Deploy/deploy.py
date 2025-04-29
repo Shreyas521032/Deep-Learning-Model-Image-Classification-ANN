@@ -891,7 +891,9 @@ with tabs[2]:
     x=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
     y=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
     color_continuous_scale="Rainbow",  # 🔁 changed color scale
-    aspect="equal"
+    aspect="equal",
+    text_auto=True
+
                     )
 
                 fig.update_layout(
