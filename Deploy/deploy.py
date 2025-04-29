@@ -885,24 +885,28 @@ with tabs[2]:
                 # Confusion Matrix
                     st.markdown("<h3>🧩 Confusion Matrix</h3>", unsafe_allow_html=True)
 
-# Load confusion matrix from session state
-                    cm = np.array(st.session_state.evaluation['confusion_matrix'])
-                    labels = [str(i) for i in range(10)]
+                    fig = px.imshow(
+                        st.session_state.evaluation['confusion_matrix'],
+                        labels=dict(x="Predicted Digit", y="True Digit", color="Count"),
+    x=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+    y=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+    color_continuous_scale="Inferno",  # 🔁 changed color scale
+    aspect="equal"
+                    )
 
-# Create the heatmap
-                    fig, ax = plt.subplots(figsize=(7, 5))
-                    sns.heatmap(cm, annot=True, fmt='d', cmap='viridis', xticklabels=labels, yticklabels=labels, cbar_kws={'label': 'Count'}, ax=ax)
+                   fig.update_layout(
+    plot_bgcolor='rgba(0,0,0,0)',
+    paper_bgcolor='rgba(0,0,0,0)',
+    margin=dict(l=20, r=20, t=20, b=20),
+    height=500,
+    coloraxis_colorbar=dict(
+        title="Prediction<br>Count",
+        tickfont=dict(color='white'),
+        titlefont=dict(color='white')
+                          )
+                    )
 
-                    ax.set_xlabel('Predicted Digit')
-                    ax.set_ylabel('True Digit')
-                    ax.set_title('Confusion Matrix')
-                    plt.tight_layout()
-
-# Display it in Streamlit
-                    st.pyplot(fig)
-
-
-
+                    st.plotly_chart(fig, use_container_width=True)
 
                 # Per-class metrics
                 st.markdown("<h3>📊 Per-Class Performance</h3>", unsafe_allow_html=True)
