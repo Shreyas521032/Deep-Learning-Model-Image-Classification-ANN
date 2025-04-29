@@ -885,7 +885,7 @@ with tabs[2]:
                 # Confusion Matrix
                     st.markdown("<h3>🧩 Confusion Matrix</h3>", unsafe_allow_html=True)
 
-                    fig = px.imshow(
+                        fig = px.imshow(
     st.session_state.evaluation['confusion_matrix'],
     labels=dict(x="Predicted Digit", y="True Digit", color="Count"),
     x=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
@@ -894,7 +894,7 @@ with tabs[2]:
     aspect="equal"
                  )
 
-                    fig.update_layout(
+                        fig.update_layout(
     plot_bgcolor='rgba(0,0,0,0)',
     paper_bgcolor='rgba(0,0,0,0)',
     margin=dict(l=20, r=20, t=20, b=20),
@@ -907,7 +907,7 @@ with tabs[2]:
                 )
 
 
-                    st.plotly_chart(fig, use_container_width=True)
+                        st.plotly_chart(fig, use_container_width=True)
 
 
                 # Per-class metrics
