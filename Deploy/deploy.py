@@ -903,7 +903,7 @@ with tabs[2]:
         title="Prediction<br>Count",
         tickfont=dict(color='white'),
         titlefont=dict(color='white')
-                          )
+    )
                     )
 
                     st.plotly_chart(fig, use_container_width=True)
