@@ -892,7 +892,7 @@ with tabs[2]:
     y=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
     color_continuous_scale="Viridis",
     aspect="equal"
-)
+                 )
 
                 fig.update_layout(
     plot_bgcolor='rgba(0,0,0,0)',
@@ -904,7 +904,6 @@ with tabs[2]:
         tickfont=dict(color='white'),  # Change tick label color
         titlefont=dict(color='white')  # Change title color
     )
-)
 
                 st.plotly_chart(fig, use_container_width=True)
 
