@@ -139,11 +139,8 @@ html_code = """
 """
 
 # Embed the HTML and JavaScript into the Streamlit app
-components.html(html_code, height=0, width=0)
+components.html(html_code, height=800, width=1200)
 
-# Your main Streamlit content goes here
-st.title("🔗 Dot Connection Effect as Background")
-st.write("This Streamlit app features a dynamic dot connection effect as the full-page background.")
 
 # Custom CSS with more vibrant design
 st.markdown("""
