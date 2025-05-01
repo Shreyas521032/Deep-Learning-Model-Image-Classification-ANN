@@ -22,9 +22,6 @@ import time
 import streamlit.components.v1 as components
 import streamlit.components.v1 as components
 
-# Set page configuration
-st.set_page_config(page_title="Dot Connection Background", layout="wide")
-
 # Define the HTML and JavaScript for the background effect
 html_code = """
 <!DOCTYPE html>
