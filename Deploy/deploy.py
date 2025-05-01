@@ -22,6 +22,13 @@ import time
 import streamlit.components.v1 as components
 import streamlit.components.v1 as components
 
+st.set_page_config(
+    page_title="Deep Learning Playground 🧠",
+    page_icon="🤖",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 # Define the HTML and JavaScript for the background effect
 html_code = """
 <!DOCTYPE html>
@@ -137,14 +144,6 @@ components.html(html_code, height=0, width=0)
 # Your main Streamlit content goes here
 st.title("🔗 Dot Connection Effect as Background")
 st.write("This Streamlit app features a dynamic dot connection effect as the full-page background.")
-
-# Configure page
-st.set_page_config(
-    page_title="Deep Learning Playground 🧠",
-    page_icon="🤖",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
 
 # Custom CSS with more vibrant design
 st.markdown("""
