@@ -1,198 +1,121 @@
-# -*- coding: utf-8 -*-
 import streamlit as st
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-import tensorflow as tf
-from tensorflow.keras.datasets import mnist
-from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import (Conv2D, MaxPooling2D, Flatten, Dense,
-                                     Dropout, BatchNormalization)
-from sklearn.metrics import confusion_matrix, classification_report
-import os
-import datetime
-from tensorflow.keras.callbacks import TensorBoard
+import streamlit.components.v1 as components
 
-# Configure page
-st.set_page_config(
-    page_title="MNIST Digit Classifier 🎯",
-    page_icon="🔢",
-    layout="wide"
-)
+# Set page configuration
+st.set_page_config(page_title="Dot Connection Background", layout="wide")
 
-# Custom CSS
-st.markdown("""
-    <style>
-    .main {background-color: #f9f9f9;}
-    h1 {color: #2a9d8f;}
-    h2 {color: #264653;}
-    .stProgress > div > div > div {background-color: #2a9d8f;}
-    [data-testid="stSidebar"] {background-color: #e9f4f3;}
-    </style>
-    """, unsafe_allow_html=True)
+# Define the HTML and JavaScript for the background effect
+html_code = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: #0d1117;
+    }
+    #dotCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="dotCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById('dotCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+    const particleCount = 100;
+    const maxDistance = 120;
+    let mouse = { x: null, y: null };
 
-# App header
-st.title("🧠 MNIST Digit Classification with CNN")
-st.markdown("---")
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
 
-# Sidebar
-with st.sidebar:
-    st.header("⚙️ Parameters")
-    epochs = st.slider("Number of epochs", 5, 30, 15)
-    batch_size = st.selectbox("Batch size", [32, 64, 128], index=1)
-    st.markdown("---")
-    st.markdown("**Model Architecture**")
-    st.code("""
-    Conv2D(32) -> BN -> MaxPool
-    Conv2D(64) -> BN -> MaxPool
-    Conv2D(128) -> BN -> MaxPool
-    Dense(128) -> Dense(10)
-    """)
-    st.markdown("---")
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-# Load data
-@st.cache_data
-def load_data():
-    (x_train, y_train), (x_test, y_test) = mnist.load_data()
-    # Preprocessing
-    x_train, x_test = x_train.astype("float32") / 255.0, x_test.astype("float32") / 255.0
-    x_train = x_train.reshape(-1, 28, 28, 1)
-    x_test = x_test.reshape(-1, 28, 28, 1)
-    y_train_cat = to_categorical(y_train, 10)
-    y_test_cat = to_categorical(y_test, 10)
-    return x_train, y_train, x_test, y_test, y_train_cat, y_test_cat
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: (Math.random() - 0.5) * 1.5,
+      });
+    }
 
-x_train, y_train, x_test, y_test, y_train_cat, y_test_cat = load_data()
+    window.addEventListener('mousemove', function(e) {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
 
-# Data visualization section
-st.header("📊 Data Exploration")
-cols = st.columns(4)
-with cols[0]:
-    st.metric("Training Samples", x_train.shape[0])
-with cols[1]:
-    st.metric("Test Samples", x_test.shape[0])
-with cols[2]:
-    st.metric("Image Size", f"{x_train.shape[1]}x{x_train.shape[2]}")
-with cols[3]:
-    st.metric("Number of Classes", 10)
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
 
-st.subheader("Sample Training Images")
-fig = plt.figure(figsize=(8, 8))
-for i in range(16):
-    plt.subplot(4, 4, i + 1)
-    plt.imshow(x_train[i].reshape(28, 28), cmap='gray')
-    plt.title(f"Label: {y_train[i]}")
-    plt.axis('off')
-st.pyplot(fig)
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
 
-# Model building
-@st.cache_resource
-def build_train_model(epochs=15, batch_size=64):
-    model = Sequential([
-        Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
-        BatchNormalization(),
-        MaxPooling2D(2, 2),
-        Dropout(0.2),
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = '#58a6ff';
+        ctx.fill();
+      });
 
-        Conv2D(64, (3, 3), activation='relu'),
-        BatchNormalization(),
-        MaxPooling2D(2, 2),
-        Dropout(0.3),
+      for (let i = 0; i < particleCount; i++) {
+        for (let j = i + 1; j < particleCount; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < maxDistance) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = 'rgba(88, 166, 255, 0.1)';
+            ctx.stroke();
+          }
+        }
+      }
 
-        Conv2D(128, (3, 3), activation='relu'),
-        BatchNormalization(),
-        MaxPooling2D(2, 2),
-        Dropout(0.4),
+      if (mouse.x && mouse.y) {
+        particles.forEach(p => {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < maxDistance) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = 'rgba(88, 166, 255, 0.2)';
+            ctx.stroke();
+          }
+        });
+      }
 
-        Flatten(),
-        Dense(128, activation='relu'),
-        Dropout(0.5),
-        Dense(10, activation='softmax')
-    ])
+      requestAnimationFrame(animate);
+    }
 
-    model.compile(
-        optimizer='adam',
-        loss='categorical_crossentropy',
-        metrics=['accuracy', 
-                tf.keras.metrics.Precision(name='precision'),
-                tf.keras.metrics.Recall(name='recall')]
-    )
+    animate();
+  </script>
+</body>
+</html>
+"""
 
-    # TensorBoard callback
-    log_dir = os.path.join("logs", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
-    tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
+# Embed the HTML and JavaScript into the Streamlit app
+components.html(html_code, height=0, width=0)
 
-    # Training progress
-    with st.spinner('🚀 Training model...'):
-        history = model.fit(
-            x_train, y_train_cat,
-            epochs=epochs,
-            batch_size=batch_size,
-            validation_split=0.1,
-            callbacks=[tensorboard_callback],
-            verbose=1
-        )
-    st.success("✅ Training completed!")
-    return model, history
-
-# Train model
-st.header("🛠 Model Training")
-if st.button("Start/Restart Training"):
-    model, history = build_train_model(epochs, batch_size)
-    
-    # Performance metrics
-    st.header("📈 Performance Metrics")
-    
-    # Test evaluation
-    st.subheader("🧪 Test Set Evaluation")
-    loss, accuracy, precision, recall = model.evaluate(x_test, y_test_cat, verbose=0)
-    cols = st.columns(4)
-    cols[0].metric("Accuracy", f"{accuracy:.2%}")
-    cols[1].metric("Precision", f"{precision:.2%}")
-    cols[2].metric("Recall", f"{recall:.2%}")
-    cols[3].metric("Loss", f"{loss:.4f}")
-
-    # Training curves
-    st.subheader("📉 Learning Curves")
-    fig = plt.figure(figsize=(16, 10))
-    metrics = ['accuracy', 'loss', 'precision', 'recall']
-    for i, metric in enumerate(metrics):
-        plt.subplot(2, 2, i + 1)
-        plt.plot(history.history[metric], label=f"Train {metric}", marker='o')
-        plt.plot(history.history[f"val_{metric}"], label=f"Val {metric}", linestyle='--', marker='x')
-        plt.title(f"{metric.capitalize()} Curve")
-        plt.xlabel("Epochs")
-        plt.ylabel(metric.capitalize())
-        plt.legend()
-        plt.grid(True)
-    st.pyplot(fig)
-
-    # Confusion matrix
-    st.subheader("🤔 Confusion Matrix")
-    y_pred = model.predict(x_test)
-    y_pred_classes = np.argmax(y_pred, axis=1)
-    conf_matrix = confusion_matrix(y_test, y_pred_classes)
-    fig = plt.figure(figsize=(10, 8))
-    sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='crest')
-    plt.title("Confusion Matrix")
-    plt.xlabel("Predicted")
-    plt.ylabel("Actual")
-    st.pyplot(fig)
-
-    # Classification report
-    st.subheader("📋 Classification Report")
-    report = classification_report(y_test, y_pred_classes, output_dict=True)
-    st.table(report)
-
-# Footer
-st.markdown("---")
-st.markdown("""
-    ### 🎯 Key Features:
-    - Convolutional Neural Network Architecture
-    - Batch Normalization & Dropout Regularization
-    - Real-time Training Metrics Tracking
-    - Comprehensive Performance Analysis
-    """)
-st.markdown("---")
-st.markdown("© **Copyright Shreyas Kasture**, All rights reserved")
+# Your main Streamlit content goes here
+st.title("🔗 Dot Connection Effect as Background")
+st.write("This Streamlit app features a dynamic dot connection effect as the full-page background.")
