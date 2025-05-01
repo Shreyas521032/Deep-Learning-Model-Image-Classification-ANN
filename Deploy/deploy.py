@@ -300,7 +300,7 @@ html_code = """
 """
 
 # Embed the HTML and JavaScript into the Streamlit app
-components.html(html_code, height=600, width=800)
+components.html(html_code, height=0, width=0)
 
 # Fun loading animation for first-time visitors
 if 'first_load' not in st.session_state:
