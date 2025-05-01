@@ -201,14 +201,18 @@ html_code = """
 <head>
   <meta charset="UTF-8">
   <style>
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
       overflow: hidden;
       background-color: #0d1117;
     }
-    canvas {
-      display: block;
+    #dotCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
   </style>
 </head>
